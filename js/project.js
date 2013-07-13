@@ -22,9 +22,9 @@ function fillData(){
       $('progress').attr('value', 
             calculatePercentage(result.funding_received, result.funding_needed))
       if (result.image != ''){
-        $('.imgpage img').attr('src', result.image);
-        $('.imgpage img').attr('width', '800px');
-        $('.imgpage img').attr('height', '100px');
+        $('#imgpage img').attr('src', result.image);
+        $('#imgpage img').attr('width', '800px');
+        $('#imgpage img').attr('height', '100px');
       }
   });
 }
