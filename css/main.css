@@ -5,8 +5,35 @@
    ========================================================================== */
 
 
+h3.trending{
+	text-align: center;
+}
 
+.funding{
+	
+}
+.funding *{
+	margin: 0.5em 0;
+}
+.funding>*>.btn{
+	display: inline-block;
+	vertical-align: top;
+}
+.tag{
+	display: inline-block;
+	vertical-align: top;
+	background-color: #444;
+	color: #F4F4F4;
+	padding: 0.4em;
+}
 
+progress {
+   -webkit-appearance: none;
+}
+progress::-webkit-progress-bar-value {
+  -webkit-appearance: none;
+  background: orangered;
+}
 
 
 
