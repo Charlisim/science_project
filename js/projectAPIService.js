@@ -9,13 +9,13 @@ function retrieveProjects () {
 	});
 }
 
-function findProjectByCriteria(criteria) {
-	$.ajax({url: urlAPI + databaseSchema + '/projects/_find'+'?criteria='+ JSON.stringify(criteria),
+function findProjectByCriteria(criteria, callback) {
+	
+		$.ajax({url: urlAPI + databaseSchema + '/projects/_find'+'?criteria='+ JSON.stringify(criteria),
 	    type: 'GET',
 	    dataType: "JSON",
 	    success: function( data ) {
-
-		    return data.results;
+	    	callback(data.results);
 		}
 	});
 }
