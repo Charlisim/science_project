@@ -42,7 +42,7 @@ progress::-webkit-progress-bar-value {
 .hero-unit{
 	height: 15em;
 }
-
+img { max-width: 100%; }
 
 
 

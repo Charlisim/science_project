@@ -91,7 +91,7 @@ Twitter = (function(){
     },
     _setUser: function(user) {
       var url = user.profile_image_url;
-      $('#user_profile_img').html("<img style='height: 40px' src='" + url + "'>");
+      $('#user_profile_img').html("<img src='" + url + "'>");
       $('#login').hide();
     }
   };

@@ -20,7 +20,12 @@ function fillData(){
       $('#project').text(result.name);
       $('#description').text(result.description);
       $('progress').attr('value', 
-            calculatePercentage(result.funding_recieved, result.funding_needed))
+            calculatePercentage(result.funding_received, result.funding_needed))
+      if (result.image != ''){
+        $('img').attr('src', result.image);
+        $('img').attr('width', '800px');
+        $('img').attr('height', '100px');
+      }
   });
 }
 fillData();
