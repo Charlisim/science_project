@@ -64,8 +64,18 @@ $(function() {
       referer = refMatch[1];
     }
     Twitter.user(function(user){
-      $pay.button('reset').text('Payment Complete!');
+      $('#payModal').modal('show');
       console.log(referer, user.screen_name);
     });
   });
+
+  $('#completePayment').on('click', function(){
+    $('#payModal').modal('hide');
+    var $progress = $('progress');
+    var v = parseInt($progress.val());
+    $progress.val(v + 30);
+    $progress.fadeOut('slow').fadeIn('slow');
+    $pay.button('reset').text('Payment Complete!');
+  })
+
 });
