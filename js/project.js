@@ -4,9 +4,9 @@ $(function() {
     var $this = $(this);
     $this.button('loading');
 
-    var postTweet = function() {
+    var postTweet = function(user) {
       var hash = $this.attr('data-hash');
-      var url = window.location + "?ref" + hash + "&user=" + Twitter.user.id;
+      var url = window.location + "?ref" + hash + "&user=" + user.id;
       var tweet = "Help me fund this project! " + url;
       Twitter.tweet(tweet, function(reply){
         $this.button('reset');
@@ -18,12 +18,8 @@ $(function() {
       });
     };
 
-    if(Twitter.user) {
-      postTweet();
-    } else {
-      Twitter.verify(function(reply){
-        postTweet();
-      });
-    }
+    Twitter.user(function(user){
+      postTweet(user);
+    });
   });
 });
