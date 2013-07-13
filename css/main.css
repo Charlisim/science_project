@@ -25,6 +25,7 @@ h3.trending{
 	background-color: #444;
 	color: #F4F4F4;
 	padding: 0.4em;
+	margin: 0.2em;
 }
 .tag:hover{
 	cursor: pointer;

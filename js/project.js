@@ -26,6 +26,10 @@ function fillData(){
         $('#imgpage img').attr('width', '800px');
         $('#imgpage img').attr('height', '100px');
       }
+      $.each(result.tags, function(i, val){
+        console.log(val);
+        $('.tags').append('<div class="tag">' + val + '</div>')
+      });
   });
 }
 fillData();
