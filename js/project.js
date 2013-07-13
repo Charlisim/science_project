@@ -22,18 +22,19 @@ function fillData(){
       $('progress').attr('value', 
             calculatePercentage(result.funding_recieved, result.funding_needed))
   });
-  
 }
 fillData();
+
 $(function() {
   var $button = $('#share_in_twitter');
   $button.on('click', function(event){
     var $this = $(this);
     $this.button('loading');
 
-    var postTweet = function() {
+    var postTweet = function(user) {
       var hash = $this.attr('data-hash');
-      var tweet = "I like this project! http://localhost:8080/project.html?ref=" + hash + "&user=" + Twitter.user.id;
+      var url = window.location + "?ref=" + user.id;
+      var tweet = "Help me fund this project! " + url;
       Twitter.tweet(tweet, function(reply){
         $this.button('reset');
         if(reply.httpstatus == 200) {
@@ -44,12 +45,22 @@ $(function() {
       });
     };
 
-    if(Twitter.user) {
-      postTweet();
-    } else {
-      Twitter.verify(function(reply){
-        postTweet();
-      });
+    Twitter.user(function(user){
+      postTweet(user);
+    });
+  });
+
+  var $pay = $('#pay');
+  $pay.on('click', function() {
+    $pay.button('loading');
+    var refMatch = window.location.toString().match(/ref=(\d+)/);
+    var referer;
+    if(refMatch) {
+      referer = refMatch[1];
     }
+    Twitter.user(function(user){
+      $pay.button('reset').text('Payment Complete!');
+      console.log(referer, user.screen_name);
+    });
   });
 });
