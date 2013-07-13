@@ -47,7 +47,13 @@ img { max-width: 100%; }
 
 
 
+.promoters img{
+	vertical-align: text-top;
+}
 
+.project{
+	margin: 1em 0;
+}
 
 
 
