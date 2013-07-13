@@ -10,10 +10,9 @@ function retrieveProjects () {
 }
 
 function findProjectByCriteria(criteria) {
-	$.ajax({url: urlAPI + databaseSchema + '/projects/_find',
+	$.ajax({url: urlAPI + databaseSchema + '/projects/_find'+'?criteria='+ JSON.stringify(criteria),
 	    type: 'GET',
 	    dataType: "JSON",
-	    data: '?criteria= '+ criteria,
 	    success: function( data ) {
 
 		    return data.results;
