@@ -26,6 +26,9 @@ h3.trending{
 	color: #F4F4F4;
 	padding: 0.4em;
 }
+.tag:hover{
+	cursor: pointer;
+}
 
 progress {
    -webkit-appearance: none;
@@ -36,6 +39,9 @@ progress::-webkit-progress-bar-value {
 }
 
 
+.hero-unit{
+	height: 15em;
+}
 
 
 
