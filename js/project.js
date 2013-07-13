@@ -66,7 +66,9 @@ $(function() {
     var referer;
     if(refMatch) {
       referer = refMatch[1];
-      $('#referer').text(referer);
+      $('#referer').text('@' + referer);
+    } else {
+      $('#referer').parent().hide();
     }
     $('#payModal').modal('show');
   });
@@ -78,7 +80,7 @@ $(function() {
     $progress.val(v + 30);
     $progress.fadeOut('slow').fadeIn('slow');
     $pay.button('reset').text('Payment Complete!');
-    $('#points').text('1 point');
+    $('#points').fadeOut('slow').text('+1 point').fadeIn('slow');
   })
 
 });
