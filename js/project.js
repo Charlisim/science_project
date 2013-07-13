@@ -80,7 +80,11 @@ $(function() {
     $progress.val(v + 30);
     $progress.fadeOut('slow').fadeIn('slow');
     $pay.button('reset').text('Payment Complete!');
-    $('#points').fadeOut('slow').text('+1 point').fadeIn('slow');
-  })
+    var refMatch = window.location.toString().match(/ref=(\w+)/);
+    var referer;
+    if(refMatch) {
+      $('#points').fadeOut('slow').text('+1 point').fadeIn('slow').addClass('label');
+    }
+  });
 
 });
