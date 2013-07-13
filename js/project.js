@@ -6,7 +6,8 @@ $(function() {
 
     var postTweet = function() {
       var hash = $this.attr('data-hash');
-      var tweet = "I like this project! http://localhost:8080/project.html?ref=" + hash + "&user=" + Twitter.user.id;
+      var url = window.location + "?ref" + hash + "&user=" + Twitter.user.id;
+      var tweet = "Help me fund this project! " + url;
       Twitter.tweet(tweet, function(reply){
         $this.button('reset');
         if(reply.httpstatus == 200) {
