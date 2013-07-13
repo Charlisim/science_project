@@ -42,7 +42,7 @@ $(function() {
 
     var postTweet = function(user) {
       var hash = $this.attr('data-hash');
-      var url = window.location + "?ref=" + user.id;
+      var url = window.location + "?ref=" + user.screen_name;
       var tweet = "Help me fund this project! " + url;
       Twitter.tweet(tweet, function(reply){
         $this.button('reset');
@@ -62,15 +62,13 @@ $(function() {
   var $pay = $('#pay');
   $pay.on('click', function() {
     $pay.button('loading');
-    var refMatch = window.location.toString().match(/ref=(\d+)/);
+    var refMatch = window.location.toString().match(/ref=(\w+)/);
     var referer;
     if(refMatch) {
       referer = refMatch[1];
+      $('#referer').text(referer);
     }
-    Twitter.user(function(user){
-      $('#payModal').modal('show');
-      console.log(referer, user.screen_name);
-    });
+    $('#payModal').modal('show');
   });
 
   $('#completePayment').on('click', function(){
