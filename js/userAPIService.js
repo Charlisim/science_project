@@ -4,31 +4,18 @@ function retrieveUsers () {
 	    dataType: "JSON",
 	    success: function( data ) {
 
-		    var userNames = [];
-
-		    $.each( data.results, function( i, result ) {
-		        var userNameString = "<p>" + result.username + "</p>";
-		        console.log(userNameString);
-		        userNames.push(userNameString);
-		    });
+		    return data.results;
 		}
 	});
 }
 
 function findUserByCriteria(criteria) {
-	$.ajax({url: urlAPI + databaseSchema + '/users/_find',
+	$.ajax({url: urlAPI + databaseSchema + '/users/_find'+'?criteria='+ JSON.stringify(criteria),
 	    type: 'GET',
 	    dataType: "JSON",
-	    data: '?criteria= '+ criteria,
 	    success: function( data ) {
 
-		    var userNames = [];
-
-		    $.each( data.results, function( i, result ) {
-		        var userNameString = "<p>" + result.username + "</p>";
-		        console.log(userNameString);
-		        userNames.push(userNameString);
-		    });
+		    return data.results;
 		}
 	});
 }
@@ -40,9 +27,6 @@ function createUser(userData) {
 	    data: 'docs=[' + JSON.stringify(userData) + ']',
 	    success: function( data ) {
 
-		    $.each( data.results, function( i, result ) {
-		        console.log(result.ok);
-		    });
-		}
+		    return data.results;		}
 	});
 }
