@@ -78,6 +78,7 @@ $(function() {
     $progress.val(v + 30);
     $progress.fadeOut('slow').fadeIn('slow');
     $pay.button('reset').text('Payment Complete!');
+    $('#points').text('1 point');
   })
 
 });
