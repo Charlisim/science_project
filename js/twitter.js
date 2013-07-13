@@ -5,12 +5,15 @@ Twitter = (function(){
   var public_fnc = {
     user: null,
 
-    tweet: function(message) {
+    tweet: function(message, callback) {
       cb.__call(
           "statuses_update",
           {"status": message},
           function (reply) {
             console.log(reply);
+            if(callback) {
+              callback(reply);
+            }
           }
       );
     },
@@ -37,6 +40,7 @@ Twitter = (function(){
     },
 
     pin: function() {
+      var self = this;
       cb.__call(
           "oauth_accessToken",
           {oauth_verifier: document.getElementById("PINFIELD").value},
@@ -47,14 +51,12 @@ Twitter = (function(){
 
             $.cookie('oauth_token', reply.oauth_token);
             $.cookie('oauth_token_secret', reply.oauth_token_secret);
-
-            // if you need to persist the login after page reload,
-            // consider storing the token in a cookie or HTML5 local storage
+            self.verify();
           }
       );
     },
 
-    verify: function() {
+    verify: function(callback) {
       var self = this;
       cb.__call(
           "account_verifyCredentials",
@@ -62,6 +64,7 @@ Twitter = (function(){
           function (reply) {
             console.log(reply);
             self.user = reply;
+            callback(reply);
           }
       );
     }
@@ -73,7 +76,7 @@ Twitter = (function(){
   if(token && secret) {
     cb.setToken(token, secret);
     public_fnc.authorized = true;
-    public_fnc.verify();
+    //public_fnc.verify();
   }
 
   return public_fnc;
